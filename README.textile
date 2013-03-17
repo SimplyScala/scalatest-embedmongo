@@ -10,7 +10,7 @@ h2. Roadmap
 
 * trait to use embedMongo                  TODO
 
-h2. Installation
+h2. Installation NOT YET AVAILABLE!!!!!!!
 
 h3. Git repo
 
