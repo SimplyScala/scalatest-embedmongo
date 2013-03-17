@@ -1,6 +1,6 @@
 h1. SCALATEST EMBED MONGO
 
-This project provides API to use an "embedMongo database":https://github.com/michaelmosmann/embedmongo.flapdoodle.de in your tests
+This project provides API to use an "embedMongo database":https://github.com/michaelmosmann/embedmongo.flapdoodle.de in your Scala tests
 
 It is directly inspired by "spec2-embedmongo":https://github.com/athieriot/specs2-embedmongo project.
 
@@ -8,7 +8,8 @@ This works in a Java 6+ environment
 
 h2. Roadmap
 
-* trait to use embedMongo                  TODO
+* trait to use embedMongo                  OK
+* trait to use embedMongo fixture          OK
 
 h2. Installation NOT YET AVAILABLE!!!!!!!
 
@@ -22,15 +23,16 @@ h3. Maven dependency
 <pre><code>
     <dependency>
         <groupId>com.github.simplyscala</groupId>
-        <artifactId>simplyscala-server_2.9.2</artifactId>
-        <version>0.3</version>
+        <artifactId>scalatest-embedmongo_2.9.2</artifactId>
+        <version>0.1</version>
+        <scope>test</scope>
     </dependency>
 </code></pre>
 
 h3. SBT dependency
 
 <pre><code>
-    libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.3"
+    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.1" % "test"
 </code></pre>
 
     Only the following Scala versions 2.9.0, 2.9.1 & 2.9.2 are currently supported.
@@ -43,31 +45,63 @@ In your play! project Build file :
     object ApplicationBuild extends Build {
 
         val appDependencies = Seq (
-            "com.github.simplyscala" %% "simplyscala-server" % "0.3"
+            "com.github.simplyscala" %% "scalatest-embedmongo" % "0.1" % "test"
         )
     }
 </code></pre>
 
 h3. Simple JAR file
 
-"0.3 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/simplyscala-server_2.9.2/0.3/simplyscala-server_2.9.2-0.3.jar
+"0.1 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.9.2/0.1/scalatest-embedmongo_2.9.2-0.1.jar
 
 h2. Usage
 
-In order to use SimplyScala server API, import as follows:
+In order to use scalatest-embedmongo API, your test must extends MongoEmbedDatabase as follows:
 
-<code>import fr.simply._</code>
+<code>MyTest extends FunSuite with MongoEmbedDatabase</code>
 
-h3. Basic Usage
+h3. Basic Usage (mutable way)
 
 <pre>
 <code>
-    val server = new StubServer(8080).start
-    server.stop
+    MyTest extends FunSuite with MongoEmbedDatabase with BeforeAndAfter {
+
+        var mongoProps: MongodProps = null
+
+        before {
+            mongoProps = mongoStart()   // by default port = 12345 & version = Version.2.3.0
+        }                               // add your own port & version parameters in mongoStart method if you need it
+
+        after {
+            mongoStop(mongoProps)
+        }
+
+        test("some test with mongo") {
+            ...
+        }
+    }
 </code>
 </pre>
 
-By default, with no routes defined, SimplyScala server returns a 404 text/plain response with "error" in body
+h3. Immutable way usage
+
+You can use fixture to start/stop the embed server with immutable way :
+
+<pre>
+<code>
+    MyTest extends FunSuite with MongoEmbedDatabase {
+
+        test("test with fixture") {
+            //add your own port & version parameters in withEmbedMongoFixture method if you need it
+            withEmbedMongoFixture() { mongodProps =>
+                // do some mongo database operations
+                // in this fixture the dabatase is started
+                // at the end of this fixture the database is stopped
+            }
+        }
+    }
+</code>
+</pre>
 
 h5. footpage
 

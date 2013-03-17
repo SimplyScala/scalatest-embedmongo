@@ -16,7 +16,8 @@ object ScalaTestEmbededMongoBuild extends Build {
 
             libraryDependencies ++= Seq(
                 "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.28",
-                "org.scalatest" %% "scalatest" % "1.8" % "test"
+                "org.scalatest" %% "scalatest" % "1.8" % "test",
+                "com.novus" %% "salat-core" % "1.9.1" % "test"
             ),
 
             publishMavenStyle := true,

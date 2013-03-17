@@ -5,20 +5,34 @@ import de.flapdoodle.embed.mongo.{MongodProcess, MongodExecutable, MongodStarter
 import de.flapdoodle.embed.mongo.config.MongodConfig
 
 /**
- * Extends this trait provide to your test class a connection to embededMongoDb database
+ * Extends this trait provide to your test class a connection to embedMongo database
  */
 trait MongoEmbedDatabase {
 
-    private lazy val runtime: MongodStarter = MongodStarter.getDefaultInstance
-    private lazy val mongoExe: MongodExecutable = runtime.prepare(new MongodConfig(embedMongoDBVersion, embedConnectionPort, true))
+    private def runtime(): MongodStarter = MongodStarter.getDefaultInstance
+    private def mongodExec(port: Int, version: Version): MongodExecutable = runtime().prepare(new MongodConfig(version, port, true))
 
-    // Override this method to customize testing port
-    protected def embedConnectionPort: Int = 12345
+    protected def mongoStart(port: Int = 12345, version: Version = Version.V2_3_0): MongodProps = {
+        val mongodExe = mongodExec(port, version)
+        MongodProps(mongodExe.start(), mongodExe)
+    }
 
-    // Override this method to personalize MongoDB version
-    protected def embedMongoDBVersion: Version = Version.V2_3_0
+    protected def mongoStop( mongodProps: MongodProps ) = {
+        Option(mongodProps).foreach( _.mongodProcess.stop() )
+        Option(mongodProps).foreach( _.mongodExe.stop() )
+    }
 
-    protected def mongoStart(): MongodProcess = mongoExe.start()
+    protected def withEmbedMongoFixture(port: Int = 12345, version: Version = Version.V2_3_0)(fixture: MongodProps => Any) {
+        val mayBeMongodProps: Option[MongodProps] = try {
+            val mongodProps = mongoStart(port, version)
+            fixture(mongodProps)
+            Option(mongodProps)
+        } catch {
+            case _ => None  // TODO rajouter log.error
+        }
 
-    protected def mongoStop( mongodProcess: MongodProcess) = mongodProcess.stop()
+        mayBeMongodProps.foreach( mongoStop(_) )
+    }
 }
+
+sealed case class MongodProps(mongodProcess: MongodProcess, mongodExe: MongodExecutable)
