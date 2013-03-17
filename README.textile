@@ -1,0 +1,246 @@
+h1. SCALATEST EMBED MONGO
+
+This project provides API to use an embedMongo:"https://github.com/michaelmosmann/embedmongo.flapdoodle.de"
+database in your test with the test framework ScalaTest:"http://www.scalatest.org/"
+
+It is directly inspired by spec2-embedmongo:"https://github.com/athieriot/specs2-embedmongo" project.
+
+This works in a Java 6+ environment
+
+
+
+
+
+
+
+#The actual project release version is "0.3":http://search.maven.org/#search|ga|1|simplyscala-server
+
+h2. Roadmap
+
+* trait to use embedMongo                  TODO
+
+h2. Installation
+
+h3. Git repo
+
+simplyscala-server is a SBT project.
+It use 0.12 sbt version.
+
+h3. Maven dependency
+
+<pre><code>
+    <dependency>
+        <groupId>com.github.simplyscala</groupId>
+        <artifactId>simplyscala-server_2.9.2</artifactId>
+        <version>0.3</version>
+    </dependency>
+</code></pre>
+
+h3. SBT dependency
+
+<pre><code>
+    libraryDependencies += "com.github.simplyscala" %% "simplyscala-server" % "0.3"
+</code></pre>
+
+    Only the following Scala versions 2.9.0, 2.9.1 & 2.9.2 are currently supported.
+
+h4. Play! specific dependency management
+
+In your play! project Build file :
+
+<pre><code>
+    object ApplicationBuild extends Build {
+
+        val appDependencies = Seq (
+            "com.github.simplyscala" %% "simplyscala-server" % "0.3"
+        )
+    }
+</code></pre>
+
+h3. Simple JAR file
+
+"0.3 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/simplyscala-server_2.9.2/0.3/simplyscala-server_2.9.2-0.3.jar
+
+h2. Usage
+
+In order to use SimplyScala server API, import as follows:
+
+<code>import fr.simply._</code>
+
+h3. Basic Usage
+
+<pre>
+<code>
+    val server = new StubServer(8080).start
+    server.stop
+</code>
+</pre>
+
+By default, with no routes defined, SimplyScala server returns a 404 text/plain response with "error" in body
+
+h3. Server's custom default response
+
+You can define your own server's default response like this :
+
+<code>
+    val server = new StubServer(8080).defaultResponse(ContentType("text/plain"), "value return in body", 400).start
+</code>
+
+h3. Build GET request routes with param
+
+<pre>
+<code>
+    val route = GET (
+        path = "/test",
+        params = Map("param1" -> "toto"),
+        response = StaticServerResponse(ContentType("text/plain"), "yo", 200)
+    )
+
+    val server = new StubServer(8080, route).start
+</code>
+</pre>
+
+when you request <code>http://localhost:8080/test?param1=toto</code>, the server returns with an http code 200 and a "text/plain"-typed body containing "yo".
+
+h3. Build POST request route with param
+
+<pre>
+<code>
+    val route = POST (
+        path = "/test",
+        params = Map("param1" -> "toto"),
+        response = StaticServerResponse(ContentType("text/plain"), "yo", 200)
+    )
+
+    val server = new StubServer(8080, route).start
+</code>
+</pre>
+
+h3. Build request with dynamic server response
+
+Since 0.3 version, you able to define some dynamic server response.
+To do that, you must define function typed as Request => StaticServerResponse, which permit use some parameters of the
+server request to build a response.
+
+<pre>
+<code>
+    import org.simpleframework.http.Request
+    ...
+
+    val dynamicResponse: Request => StaticServerResponse = {
+        request =>
+            println("I use dynamic code !!!")
+            StaticServerResponse(Text_Plain, "OK dynamic", 200)
+        }
+
+    val route = GET (
+        path = "/test",
+        params = Map("param1" -> "toto"),
+        response = DynamicServerResponse(dynamicResponse)
+    )
+
+    val server = new StubServer(8080, route).start
+</code>
+</pre>
+
+h3. What to do when the configured port is already used ?
+
+Before creating the server instance, SimplyScala checks if the port you defined is not already in use.
+If it is the case, SimplyScala will try the next value (+1) port to start the server.
+You can retrieve the effective port like this:
+
+<pre>
+<code>
+    val server = new StubServer(8080).start
+    server.portInUse    // perhaps 8081
+</code>
+</pre>
+
+h3. ContentType util
+
+with fr.simply.util._ import you can use some utilities to declare server's content type
+
+<pre>
+<code>
+    val route = GET (
+        path = "/test",
+        params = Map("param1" -> "toto"),
+        response = StaticServerResponse(Text_Plain, "yo", 200)
+    )
+
+    val server = new StubServer(8080, route).start
+</code>
+</pre>
+
+if we don't have the needed content type util you can use <code>ContentType("your content type")</code>
+
+h2. Uses in test context
+
+h3. Simple usage in test context
+
+simplyscala-server is particularly useful in unit test context.
+You can use it like that with "ScalaTest":http://www.scalatest.org/ :
+
+<pre>
+<code>
+    class StubServerTest extends FunSuite {
+
+        test("a test which needed simplyscala-server") {
+            val route = GET (
+                path = "/test",
+                params = Map("param" -> "toto"),
+                response = StaticServerResponse(Text_Plain, "yo", 200)
+            )
+
+            val server = new StubServer(8080, route).start
+
+            someHttpRequest("http://localhost:%s/test?param=toto".format(server.portInUse))
+        }
+    }
+</code>
+</pre>
+
+You you do not have to stop the server thanks to when a define port is already used, simplyscala-server start server with next port and return reference to it via portInUse method.
+
+h3. using fixture to manipulate immutable server reference (will be in 0.4 version, not in production today)
+
+If you want to stop the server & stay immutable, you can use StubServerFixtureTrait like that
+
+<pre>
+<code>
+
+import org.scalatest.FunSuite
+import fr.simply.{StaticServerResponse, GET}
+import fr.simply.util.Text_Plain
+import fr.simply.fixture.StubServerFixture
+
+    class StubServerFixtureTest extends FunSuite with StubServerFixture {
+
+        test("test stub server fixture") {
+            val route = GET (
+                path = "/test",
+                params = Map("param1" -> "toto"),
+                response = StaticServerResponse(Text_Plain, "yo", 200)
+            )
+
+            withStubServerFixture(8080, route) { server =>
+                // you can continue your test with server reference
+                // in this fixture your server stub is started
+                // at the en d of this fixture your server is stopped
+            }
+        }
+    }
+</code>
+</pre>
+
+"ScalaTestFixture":http://www.scalatest.org/user_guide/sharing_fixtures
+
+h5. footpage
+
+This file is written with .textile extension
+* http://en.wikipedia.org/wiki/Textile_%28markup_language%29
+* http://textile.sitemonks.com
+* http://redcloth.org/hobix.com/textile/
+
+"Maven Repository Usage Guide":https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide
+"Sonatype project JIRA Page":https://issues.sonatype.org/browse/OSSRH-5163
