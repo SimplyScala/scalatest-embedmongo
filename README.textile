@@ -13,7 +13,7 @@ This works in a Java 6+ environment
 
 
 
-#The actual project release version is "0.3":http://search.maven.org/#search|ga|1|simplyscala-server
+###The actual project release version is "0.3":http://search.maven.org/#search|ga|1|simplyscala-server
 
 h2. Roadmap
 
