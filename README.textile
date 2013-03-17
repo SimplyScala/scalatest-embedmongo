@@ -1,6 +1,6 @@
 h1. SCALATEST EMBED MONGO
 
-This project provides API to use an "embedMongo databse":https://github.com/michaelmosmann/embedmongo.flapdoodle.de database in your tests
+This project provides API to use an "embedMongo database":https://github.com/michaelmosmann/embedmongo.flapdoodle.de in your tests
 
 It is directly inspired by "spec2-embedmongo":https://github.com/athieriot/specs2-embedmongo project.
 
