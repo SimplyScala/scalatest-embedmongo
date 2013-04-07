@@ -6,7 +6,7 @@ object ScalaTestEmbededMongoBuild extends Build {
         settings = Project.defaultSettings ++ Seq(
             name := "scalatest-embedmongo",
             organization := "com.github.simplyscala",
-            description := "API to use embeded mongoDb database for testing in ScalaTest",
+            description := "API to use embeded mongoDb database for testing in Scala",
 
             version := "0.1-SNAPSHOT",
 
