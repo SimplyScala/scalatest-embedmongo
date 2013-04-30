@@ -10,7 +10,7 @@ h2. Roadmap
 
 * trait to use embedMongo                  OK
 * trait to use embedMongo fixture          OK
-* deploy on maven central                  TODO
+* deploy on maven central                  OK
 * build on scala 2.10                      TODO
 
 h2. Installation NOT YET AVAILABLE!!!!!!!
