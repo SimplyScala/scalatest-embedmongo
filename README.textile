@@ -13,7 +13,7 @@ h2. Roadmap
 * deploy on maven central                  OK
 * build on scala 2.10                      TODO
 
-h2. Installation NOT YET AVAILABLE!!!!!!!
+h2. Installation
 
 h3. Git repo
 
@@ -37,7 +37,7 @@ h3. SBT dependency
     libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.1" % "test"
 </code></pre>
 
-    Only the following Scala versions 2.9.0, 2.9.1 & 2.9.2 are currently supported.
+    Only the following Scala versions 2.9.2 are currently supported.
 
 h4. Play! specific dependency management
 
