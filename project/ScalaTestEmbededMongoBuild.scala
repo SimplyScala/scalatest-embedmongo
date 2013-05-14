@@ -12,16 +12,16 @@ object ScalaTestEmbededMongoBuild extends Build {
 
             scalaVersion := "2.10.1",
 
-            //crossScalaVersions := Seq("2.9.0", "2.9.1", "2.9.2"),
+            crossScalaVersions := Seq("2.9.1", "2.9.2"),
 
-	    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
+    	    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
 
-            libraryDependencies ++= Seq(
+            libraryDependencies <++= (scalaVersion) { scalaVersion => Seq(
                 "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.28",
-                "org.scalatest" %% "scalatest" % "1.9.1" % "test",
+                "org.scalatest" %% "scalatest" % CrossDependencies.scalatest_version(scalaVersion) % "test",
                 "com.novus" %% "salat" % "1.9.2-SNAPSHOT" % "test"
-		//"com.novus" %% "salat-core" % "1.9.1" % "test"
-            ),
+            )
+            },
 
             publishMavenStyle := true,
             publishArtifact in Test := false,
@@ -56,4 +56,8 @@ object ScalaTestEmbededMongoBuild extends Build {
             }
         )
     )
+
+    object CrossDependencies {
+        def scalatest_version(scala_version: String) = if(scala_version startsWith "2.9") "1.8" else "1.9.1"
+    }
 }
