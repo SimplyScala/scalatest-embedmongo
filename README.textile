@@ -8,11 +8,11 @@ This works in a Java 6+ environment
 
 h2. Roadmap
 
-* trait to use embedMongo                  OK
-* trait to use embedMongo fixture          OK
-* deploy on maven central                  OK
-* build on scala 2.10                      TODO
-* cross compilation 2.9 & 2.10             TODO
+* trait to use embedMongo                  OK (0.1 version)
+* trait to use embedMongo fixture          OK (0.1 version)
+* deploy on maven central                  OK (0.1 version)
+* build on scala 2.10                      OK (0.2 version)
+* cross compilation 2.9 & 2.10             OK (0.2 version)
 * manage port uses for parallel testing    TODO
 
 h2. Installation
