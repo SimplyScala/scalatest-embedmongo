@@ -12,6 +12,8 @@ h2. Roadmap
 * trait to use embedMongo fixture          OK
 * deploy on maven central                  OK
 * build on scala 2.10                      TODO
+* cross compilation 2.9 & 2.10             TODO
+* manage port uses for parallel testing    TODO
 
 h2. Installation
 
@@ -74,9 +76,7 @@ h3. Basic Usage (mutable way)
             mongoProps = mongoStart()   // by default port = 12345 & version = Version.2.3.0
         }                               // add your own port & version parameters in mongoStart method if you need it
 
-        after {
-            mongoStop(mongoProps)
-        }
+        after { mongoStop(mongoProps) }
 
         test("some test with mongo") {
             ...
