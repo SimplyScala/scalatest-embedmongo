@@ -8,11 +8,11 @@ object ScalaTestEmbededMongoBuild extends Build {
             organization := "com.github.simplyscala",
             description := "API to use embeded mongoDb database for testing in Scala",
 
-            version := "0.2-SNAPSHOT",
+            version := "0.2",
 
             scalaVersion := "2.10.1",
 
-            crossScalaVersions := Seq("2.9.1", "2.9.2"),
+            crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.1"),
 
     	    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
 

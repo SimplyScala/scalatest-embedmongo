@@ -27,8 +27,8 @@ h3. Maven dependency
 <pre><code>
     <dependency>
         <groupId>com.github.simplyscala</groupId>
-        <artifactId>scalatest-embedmongo_2.9.2</artifactId>
-        <version>0.1</version>
+        <artifactId>scalatest-embedmongo_2.10</artifactId>
+        <version>0.2</version>
         <scope>test</scope>
     </dependency>
 </code></pre>
@@ -36,10 +36,10 @@ h3. Maven dependency
 h3. SBT dependency
 
 <pre><code>
-    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.1" % "test"
+    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2" % "test"
 </code></pre>
 
-    Only the following Scala versions 2.9.2 are currently supported.
+    Only the following Scala versions 2.9.1, 2.9.2 & 2.10 are currently supported.
 
 h4. Play! specific dependency management
 
@@ -49,20 +49,28 @@ In your play! project Build file :
     object ApplicationBuild extends Build {
 
         val appDependencies = Seq (
-            "com.github.simplyscala" %% "scalatest-embedmongo" % "0.1" % "test"
+            "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2" % "test"
         )
     }
 </code></pre>
 
 h3. Simple JAR file
 
-"0.1 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.9.2/0.1/scalatest-embedmongo_2.9.2-0.1.jar
+"0.2 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.10/0.2/scalatest-embedmongo_2.10-0.2.jar
 
 h2. Usage
 
 In order to use scalatest-embedmongo API, your test must extends MongoEmbedDatabase as follows:
 
-<code>MyTest extends FunSuite with MongoEmbedDatabase</code>
+<pre>
+<code>
+    import com.github.simplyscala.MongoEmbedDatabase
+
+    ...
+
+    MyTest extends FunSuite with MongoEmbedDatabase
+</code>
+</pre>
 
 h3. Basic Usage (mutable way)
 
