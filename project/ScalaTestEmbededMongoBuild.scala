@@ -10,14 +10,17 @@ object ScalaTestEmbededMongoBuild extends Build {
 
             version := "0.2-SNAPSHOT",
 
-            scalaVersion := "2.9.2",
+            scalaVersion := "2.10.1",
 
             //crossScalaVersions := Seq("2.9.0", "2.9.1", "2.9.2"),
 
+	    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
+
             libraryDependencies ++= Seq(
                 "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.28",
-                "org.scalatest" %% "scalatest" % "1.8" % "test",
-                "com.novus" %% "salat-core" % "1.9.1" % "test"
+                "org.scalatest" %% "scalatest" % "1.9.1" % "test",
+                "com.novus" %% "salat" % "1.9.2-SNAPSHOT" % "test"
+		//"com.novus" %% "salat-core" % "1.9.1" % "test"
             ),
 
             publishMavenStyle := true,
