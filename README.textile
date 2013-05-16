@@ -93,7 +93,7 @@ h3. Basic Usage (mutable way)
 </code>
 </pre>
 
-h3. Immutable way usage
+h3. Immutable way usage (Don't work - critical bug in correction !!!!)
 
 You can use fixture to start/stop the embed server with immutable way :
 
