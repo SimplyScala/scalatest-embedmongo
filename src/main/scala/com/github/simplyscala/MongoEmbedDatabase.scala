@@ -23,15 +23,8 @@ trait MongoEmbedDatabase {
     }
 
     protected def withEmbedMongoFixture(port: Int = 12345, version: Version = Version.V2_3_0)(fixture: MongodProps => Any) {
-        val mayBeMongodProps: Option[MongodProps] = try {
-            val mongodProps = mongoStart(port, version)
-            fixture(mongodProps)
-            Option(mongodProps)
-        } catch {
-            case _ => None  // TODO rajouter log.error
-        }
-
-        mayBeMongodProps.foreach( mongoStop(_) )
+        val mongodProps = mongoStart(port, version)
+        try { fixture(mongodProps) } finally { Option(mongodProps).foreach( mongoStop(_) ) }
     }
 }
 
