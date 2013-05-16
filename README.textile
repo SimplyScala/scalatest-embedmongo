@@ -28,7 +28,7 @@ h3. Maven dependency
     <dependency>
         <groupId>com.github.simplyscala</groupId>
         <artifactId>scalatest-embedmongo_2.10</artifactId>
-        <version>0.2</version>
+        <version>0.2.1</version>
         <scope>test</scope>
     </dependency>
 </code></pre>
@@ -36,7 +36,7 @@ h3. Maven dependency
 h3. SBT dependency
 
 <pre><code>
-    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2" % "test"
+    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.1" % "test"
 </code></pre>
 
     Only the following Scala versions 2.9.1, 2.9.2 & 2.10 are currently supported.
@@ -49,14 +49,14 @@ In your play! project Build file :
     object ApplicationBuild extends Build {
 
         val appDependencies = Seq (
-            "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2" % "test"
+            "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.1" % "test"
         )
     }
 </code></pre>
 
 h3. Simple JAR file
 
-"0.2 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.10/0.2/scalatest-embedmongo_2.10-0.2.jar
+"0.2.1 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.10/0.2.1/scalatest-embedmongo_2.10-0.2.1.jar
 
 h2. Usage
 

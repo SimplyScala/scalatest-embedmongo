@@ -1,0 +1,20 @@
+h2. Version 0.1
+
+    * delivery date : may 13th 2013
+    * developer(s)  : bourdon.ugo@gmail.com
+    * features      :
+        ** trait to use embedMongo
+        ** use immutable fixture for embedmongo
+
+h2. Version 0.2
+    * delivery date : may 15th 2013
+    * developer(s)  : bourdon.ugo@gmail.com
+    * features      :
+        ** build on scala 2.10
+        ** cross compilation 2.9 & 2.10
+
+h3. Version 0.2.1
+    * delivery date : may 16th 2013
+    * developer(s)  : bourdon.ugo@gmail.com
+    * features      :
+        ** fix critical bug in withEmbedMongoFixture
