@@ -93,7 +93,7 @@ h3. Basic Usage (mutable way)
 </code>
 </pre>
 
-h3. Immutable way usage (Don't work - critical bug in correction !!!!)
+h3. Immutable way usage
 
 You can use fixture to start/stop the embed server with immutable way :
 
@@ -112,6 +112,8 @@ You can use fixture to start/stop the embed server with immutable way :
     }
 </code>
 </pre>
+
+Be careful if you launch yours tests in parallel you could have some trouble because of mongodb port multiples uses !
 
 h5. footpage
 

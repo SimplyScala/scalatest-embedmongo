@@ -8,7 +8,7 @@ object ScalaTestEmbededMongoBuild extends Build {
             organization := "com.github.simplyscala",
             description := "API to use embeded mongoDb database for testing in Scala",
 
-            version := "0.2.1",
+            version := "0.3-SNAPSHOT",
 
             scalaVersion := "2.10.1",
 
