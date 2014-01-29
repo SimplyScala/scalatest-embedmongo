@@ -2,10 +2,6 @@ package com.github.simplyscala
 
 import org.scalatest.{BeforeAndAfter, FunSuite}
 import org.scalatest.matchers.ShouldMatchers
-import com.mongodb.casbah.MongoConnection
-import com.mongodb.casbah.Imports._
-import com.novus.salat.global._
-import com.novus.salat.dao._
 
 class MongoEmbedDatabaseTest extends FunSuite with ShouldMatchers with BeforeAndAfter with MongoEmbedDatabase {
 
@@ -20,10 +16,9 @@ class MongoEmbedDatabaseTest extends FunSuite with ShouldMatchers with BeforeAnd
     }
 
     test("test connection with embed mongodb") {
-        Model.save(Model(name = "test"))
-        Model.count() should be (1)
+        DummyModel.save(DummyModel(name = "test"))
+        DummyModel.count() should be (1)
     }
 }
 
-case class Model(id: ObjectId = new ObjectId, name: String)
-object Model extends SalatDAO[Model, ObjectId](collection = MongoConnection("localhost", 12345)("test")("model")) {}
+
