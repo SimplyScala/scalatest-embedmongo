@@ -14,14 +14,15 @@ object ScalaTestEmbededMongoBuild extends Build {
 
             crossScalaVersions := Seq("2.9.1", "2.9.2", "2.10.1"),
 
-    	    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
+    	      resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots",
 
             libraryDependencies <++= (scalaVersion) { scalaVersion => Seq(
-                "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.28",
+                "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "1.41",
                 "org.scalatest" %% "scalatest" % CrossDependencies.scalatest_version(scalaVersion) % "test",
-                "com.novus" %% "salat" % "1.9.2-SNAPSHOT" % "test"
-            )
+                "com.novus" %% "salat" % "1.9.5" % "test")
             },
+
+            parallelExecution := false,
 
             publishMavenStyle := true,
             publishArtifact in Test := false,

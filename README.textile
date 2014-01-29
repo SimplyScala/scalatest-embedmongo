@@ -1,6 +1,6 @@
 h1. SCALATEST EMBED MONGO
 
-This project provides API to use an "embedMongo database":https://github.com/michaelmosmann/embedmongo.flapdoodle.de in your Scala tests
+This project provides API to use an "embedMongo database":https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo in your Scala tests
 
 It is directly inspired by "spec2-embedmongo":https://github.com/athieriot/specs2-embedmongo project.
 
