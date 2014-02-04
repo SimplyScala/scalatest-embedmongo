@@ -18,3 +18,14 @@ h3. Version 0.2.1
     * developer(s)  : bourdon.ugo@gmail.com
     * features      :
         ** fix critical bug in withEmbedMongoFixture
+
+h3. Version 0.2.2
+    * delivery date : ???
+    * developer(s)  :
+        ** bourdon.ugo@gmail.com
+        ** emanuele.blanco@gmail.com
+    * features      :
+        ** upgrade embed mongo to 1.41 version
+        ** use only scala 2.10 version
+        ** use default runtime config to switch off details console logging
+            https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo#usage---custom-mongod-process-output
