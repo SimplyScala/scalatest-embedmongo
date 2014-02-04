@@ -1,5 +1,7 @@
 h1. SCALATEST EMBED MONGO
 
+!https://travis-ci.org/SimplyScala/scalatest-embedmongo.png?branch=master!:https://travis-ci.org/SimplyScala/scalatest-embedmongo
+
 This project provides API to use an "embedMongo database":https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo in your Scala tests
 
 It is directly inspired by "spec2-embedmongo":https://github.com/athieriot/specs2-embedmongo project.
