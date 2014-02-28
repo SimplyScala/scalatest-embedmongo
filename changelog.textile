@@ -29,3 +29,4 @@ h3. Version 0.2.2
         ** use only scala 2.10 version
         ** use default runtime config to switch off details console logging
             https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo#usage---custom-mongod-process-output
+	    fix bug : https://github.com/SimplyScala/scalatest-embedmongo/issues/4
