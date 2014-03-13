@@ -60,6 +60,40 @@ h3. Simple JAR file
 
 "0.2.1 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.10/0.2.1/scalatest-embedmongo_2.10-0.2.1.jar
 
+h3. Try SNAPSHOT version
+
+You could be tempted to try SNAPSHOT version to test project's next features.
+
+h4. with Maven
+
+<pre><code>
+<project ...>
+
+   <repositories>
+      <repository>
+         <id>maven snapshot</id>
+         <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      </repository>
+   </repositories>
+
+   ...
+
+   <dependency>
+      <groupId>com.github.simplyscala</groupId>
+        <artifactId>scalatest-embedmongo_2.10</artifactId>
+        <version>0.2.2-SNAPSHOT</version>
+        <scope>test</scope>
+    </dependency>
+</code></pre>
+
+h4. with SBT
+
+<pre><code>
+   resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+
+   libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.2-SNAPSHOT"
+</code></pre>
+
 h2. Usage
 
 In order to use scalatest-embedmongo API, your test must extends MongoEmbedDatabase as follows:
