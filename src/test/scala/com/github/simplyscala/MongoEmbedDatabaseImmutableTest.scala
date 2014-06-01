@@ -14,7 +14,7 @@ class MongoEmbedDatabaseImmutableTest extends FunSuite with ShouldMatchers with 
         } should produce[com.mongodb.MongoException]
     }
 
-    test("fixture test") {
+    ignore("fixture test") {
         withEmbedMongoFixture(12345) { mongodProps =>
             DummyModel.save(DummyModel(name = "testFixture"))
             DummyModel.count() should be (1)

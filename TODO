@@ -1,0 +1,5 @@
+-> revoir l'api "classic" pour supprimer le 'var mongoProps: MongodProps = null'
+-> ajouter la fonctionalité check port (voir http-server)
+-> utiliser reactivemongo plutôt que salat pour les tests
+-> retirer la feature "withEmbedMongoFixture" (car marche pas bien)
+-> utiliser scala 2.11.1 comme version de scala principale
