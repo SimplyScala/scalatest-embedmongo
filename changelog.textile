@@ -20,14 +20,21 @@ h3. Version 0.2.1
         ** fix critical bug in withEmbedMongoFixture
 
 h3. Version 0.2.2
-    * delivery date : ???
+    * delivery date : october 8th 2014
     * developer(s)  :
         ** bourdon.ugo@gmail.com
         ** emanuele.blanco@gmail.com
     * features      :
         ** upgrade de.flapdoodle.embed.mongo to 1.46.0 version
         ** scala 2.9.x version deprecated
-        ** build against scala 2.10 & 2.11 version
         ** use default runtime config to switch off details console logging
             https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo#usage---custom-mongod-process-output
-	    fix bug : https://github.com/SimplyScala/scalatest-embedmongo/issues/4
+	* bugs fix      :
+	    ** fix bug : https://github.com/SimplyScala/scalatest-embedmongo/issues/4
+
+h3. Version 0.2.3
+	* delivery date : ???
+    * developer(s)  :
+        ** bourdon.ugo@gmail.com
+    * features      :
+	    ** build against scala 2.11 version

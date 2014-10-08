@@ -1,6 +1,7 @@
 import sbt._
 import sbt.Keys._
 
+// sbt + publish-signed
 object ScalaTestEmbededMongoBuild extends Build {
     lazy val root = Project(id = "simplyscala-server", base = file("."),
         settings = Project.defaultSettings ++ Seq(
