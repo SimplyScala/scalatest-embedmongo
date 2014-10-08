@@ -22,7 +22,7 @@ h2. Installation
 h3. Git repo
 
 scalatest-embedmongo is a SBT project.
-It use 0.12 sbt version.
+It use 0.13.5 sbt version.
 
 h3. Maven dependency
 
@@ -30,7 +30,7 @@ h3. Maven dependency
     <dependency>
         <groupId>com.github.simplyscala</groupId>
         <artifactId>scalatest-embedmongo_2.10</artifactId>
-        <version>0.2.1</version>
+        <version>0.2.2</version>
         <scope>test</scope>
     </dependency>
 </code></pre>
@@ -38,10 +38,10 @@ h3. Maven dependency
 h3. SBT dependency
 
 <pre><code>
-    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.1" % "test"
+    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.2" % "test"
 </code></pre>
 
-    Only the following Scala versions 2.9.1, 2.9.2 & 2.10 are currently supported.
+    Only the following Scala versions 2.10 & 2.11 are currently supported.
 
 h4. Play! specific dependency management
 
@@ -51,14 +51,14 @@ In your play! project Build file :
     object ApplicationBuild extends Build {
 
         val appDependencies = Seq (
-            "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.1" % "test"
+            "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.2" % "test"
         )
     }
 </code></pre>
 
 h3. Simple JAR file
 
-"0.2.1 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.10/0.2.1/scalatest-embedmongo_2.10-0.2.1.jar
+"0.2.2 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.10/0.2.2/scalatest-embedmongo_2.10-0.2.2.jar
 
 h3. Try SNAPSHOT version
 
@@ -80,8 +80,8 @@ h4. with Maven
 
    <dependency>
       <groupId>com.github.simplyscala</groupId>
-        <artifactId>scalatest-embedmongo_2.10</artifactId>
-        <version>0.2.2-SNAPSHOT</version>
+        <artifactId>scalatest-embedmongo_2.11</artifactId>
+        <version>0.2.3-SNAPSHOT</version>
         <scope>test</scope>
     </dependency>
 </code></pre>
@@ -91,7 +91,7 @@ h4. with SBT
 <pre><code>
    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
-   libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.2-SNAPSHOT"
+   libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.3-SNAPSHOT"
 </code></pre>
 
 h2. Usage
