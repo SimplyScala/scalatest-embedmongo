@@ -43,19 +43,6 @@ h3. SBT dependency
 
     Only the following Scala versions 2.10 & 2.11 are currently supported.
 
-h4. Play! specific dependency management
-
-In your play! project Build file :
-
-<pre><code>
-    object ApplicationBuild extends Build {
-
-        val appDependencies = Seq (
-            "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.2" % "test"
-        )
-    }
-</code></pre>
-
 h3. Simple JAR file
 
 "0.2.2 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.10/0.2.2/scalatest-embedmongo_2.10-0.2.2.jar
