@@ -29,8 +29,8 @@ h3. Maven dependency
 <pre><code>
     <dependency>
         <groupId>com.github.simplyscala</groupId>
-        <artifactId>scalatest-embedmongo_2.10</artifactId>
-        <version>0.2.2</version>
+        <artifactId>scalatest-embedmongo_2.11</artifactId>
+        <version>0.2.3</version>
         <scope>test</scope>
     </dependency>
 </code></pre>
@@ -38,14 +38,14 @@ h3. Maven dependency
 h3. SBT dependency
 
 <pre><code>
-    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.2" % "test"
+    libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.3" % "test"
 </code></pre>
 
     Only the following Scala versions 2.10 & 2.11 are currently supported.
 
 h3. Simple JAR file
 
-"0.2.2 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.10/0.2.2/scalatest-embedmongo_2.10-0.2.2.jar
+"0.2.2 jar version":https://oss.sonatype.org/content/repositories/releases/com/github/simplyscala/scalatest-embedmongo_2.10/0.2.3/scalatest-embedmongo_2.10-0.2.3.jar
 
 h3. Try SNAPSHOT version
 
@@ -67,9 +67,9 @@ h4. with Maven
 
    <dependency>
       <groupId>com.github.simplyscala</groupId>
-      <artifactId>scalatest-embedmongo_2.11</artifactId>
-      <version>0.2.3-SNAPSHOT</version>
-      <scope>test</scope>
+        <artifactId>scalatest-embedmongo_2.11</artifactId>
+        <version>0.2.4-SNAPSHOT</version>
+        <scope>test</scope>
     </dependency>
 </code></pre>
 
@@ -78,7 +78,7 @@ h4. with SBT
 <pre><code>
    resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
-   libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.3-SNAPSHOT"
+   libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.4-SNAPSHOT"
 </code></pre>
 
 h2. Usage
@@ -104,7 +104,7 @@ h3. Basic Usage (mutable way)
         var mongoProps: MongodProps = null
 
         before {
-            mongoProps = mongoStart()   // by default port = 12345 & version = Version.2.3.0
+            mongoProps = mongoStart()   // by default port = 12345 & version = Version.3.0.5
         }                               // add your own port & version parameters in mongoStart method if you need it
 
         after { mongoStop(mongoProps) }

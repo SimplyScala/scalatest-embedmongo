@@ -3,21 +3,21 @@ import sbt.Keys._
 
 // sbt + publish-signed
 object ScalaTestEmbededMongoBuild extends Build {
-    lazy val root = Project(id = "simplyscala-server", base = file("."),
+    lazy val root = Project(id = "scalatest-embedmongo", base = file("."),
         settings = Project.defaultSettings ++ Seq(
             name := "scalatest-embedmongo",
             organization := "com.github.simplyscala",
             description := "API to use embeded mongoDb database for testing in Scala",
 
-            version := "0.2.3-SNAPSHOT",
+            version := "0.2.3",
 
             scalaVersion := "2.11.1",
 
             crossScalaVersions := Seq("2.10.4", "2.11.1"),
 
             libraryDependencies ++= Seq(
-                "de.flapdoodle.embed"   % "de.flapdoodle.embed.mongo"   % "1.46.0",
-                "org.scalatest"         %% "scalatest"                  % "2.1.7"       % "test",
+                "de.flapdoodle.embed"   % "de.flapdoodle.embed.mongo"   % "1.50.0",
+                "org.scalatest"         %% "scalatest"                  % "2.2.4"       % "test",
                 "com.novus"             %% "salat"                      % "1.9.8"       % "test"
             ),
 
