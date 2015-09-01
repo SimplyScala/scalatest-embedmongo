@@ -20,7 +20,7 @@ trait MongoEmbedDatabase {
         .build()
 
     protected def mongoStart(port: Int = 12345,
-                             version: Version = Version.V2_4_8,
+                             version: Version = Version.V3_0_5,
                              runtimeConfig: IRuntimeConfig = runtimeConfig): MongodProps = {
         val mongodExe: MongodExecutable = mongodExec(port, version, runtimeConfig)
         MongodProps(mongodExe.start(), mongodExe)
@@ -32,7 +32,7 @@ trait MongoEmbedDatabase {
     }
 
     protected def withEmbedMongoFixture(port: Int = 12345,
-                                        version: Version = Version.V2_4_8,
+                                        version: Version = Version.V3_0_5,
                                         runtimeConfig: IRuntimeConfig = runtimeConfig)
                                        (fixture: MongodProps => Any) {
         val mongodProps = mongoStart(port, version, runtimeConfig)
