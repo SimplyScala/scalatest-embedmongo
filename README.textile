@@ -67,9 +67,9 @@ h4. with Maven
 
    <dependency>
       <groupId>com.github.simplyscala</groupId>
-        <artifactId>scalatest-embedmongo_2.11</artifactId>
-        <version>0.2.3-SNAPSHOT</version>
-        <scope>test</scope>
+      <artifactId>scalatest-embedmongo_2.11</artifactId>
+      <version>0.2.3-SNAPSHOT</version>
+      <scope>test</scope>
     </dependency>
 </code></pre>
 
