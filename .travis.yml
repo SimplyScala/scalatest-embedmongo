@@ -1,7 +1,7 @@
 # See http://about.travis-ci.org/docs/user/build-configuration/
 language: scala
 scala:
-  - 2.11.2
+  - 2.12.1
 branches:
   only:
     - master
@@ -10,4 +10,4 @@ notifications:
     recipients:
       - bourdon.ugo@gmail.com
 jdk:
-  - openjdk7
+  - oraclejdk8

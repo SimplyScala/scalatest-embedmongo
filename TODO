@@ -1,10 +1,9 @@
+-> utiliser le plugin https://github.com/xerial/sbt-sonatype
+//https://oss.sonatype.org/#stagingRepositories
+
 -> revoir l'api "classic" pour supprimer le 'var mongoProps: MongodProps = null'
 -> ajouter la fonctionalité check port (voir http-server)
 -> utiliser reactivemongo plutôt que salat pour les tests
 -> retirer la feature "withEmbedMongoFixture" (car marche pas bien)
--> utiliser scala 2.11 comme version de scala principale
 -> introduire MongoTestSuite trait
 
--> utiliser le plugin https://github.com/xerial/sbt-sonatype
-//https://oss.sonatype.org/#stagingRepositories
--> upgrade flapdoo to version 2 (only java 8) https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo

@@ -22,7 +22,9 @@ h2. Installation
 h3. Git repo
 
 scalatest-embedmongo is a SBT project.
-It use 0.13.5 sbt version.
+It use 0.13.13 sbt version.
+Only the following Scala versions 2.10 & 2.11 are currently supported.
+The next version (0.2.4) will only support 2.11 & 2.12 scala version.
 
 h3. Maven dependency
 
@@ -40,8 +42,6 @@ h3. SBT dependency
 <pre><code>
     libraryDependencies += "com.github.simplyscala" %% "scalatest-embedmongo" % "0.2.3" % "test"
 </code></pre>
-
-    Only the following Scala versions 2.10 & 2.11 are currently supported.
 
 h3. Simple JAR file
 
