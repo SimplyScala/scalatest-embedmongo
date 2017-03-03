@@ -10,4 +10,4 @@ notifications:
     recipients:
       - bourdon.ugo@gmail.com
 jdk:
-  - openjdk8
+  - oraclejdk8
