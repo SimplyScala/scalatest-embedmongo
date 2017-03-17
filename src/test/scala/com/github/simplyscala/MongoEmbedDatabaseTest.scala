@@ -1,9 +1,8 @@
 package com.github.simplyscala
 
-import org.scalatest.{BeforeAndAfter, FunSuite}
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.{BeforeAndAfter, FunSuite, Matchers}
 
-class MongoEmbedDatabaseTest extends FunSuite with ShouldMatchers with BeforeAndAfter with MongoEmbedDatabase {
+class MongoEmbedDatabaseTest extends FunSuite with Matchers with BeforeAndAfter with MongoEmbedDatabase {
 
     var mongoProps: MongodProps = null
 

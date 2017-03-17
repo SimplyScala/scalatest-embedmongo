@@ -1,20 +1,19 @@
 package com.github.simplyscala
 
-import org.scalatest.FunSuite
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest.{FunSuite, Matchers}
 import org.scalatest.exceptions.TestFailedException
 
-class MongoEmbedDatabaseImmutableTest extends FunSuite with ShouldMatchers with MongoEmbedDatabase {
+class MongoEmbedDatabaseImmutableTest extends FunSuite with Matchers with MongoEmbedDatabase {
     test("fixture test with bad port") {
-        evaluating {
+        an[com.mongodb.MongoException] should be thrownBy {
             withEmbedMongoFixture(22222) { mongodProps =>
                 DummyModel.save(DummyModel(name = "testFixture"))
                 DummyModel.count() should be (1)
             }
-        } should produce[com.mongodb.MongoException]
+        }
     }
 
-    ignore("fixture test") {
+    test("fixture test") {
         withEmbedMongoFixture(12345) { mongodProps =>
             DummyModel.save(DummyModel(name = "testFixture"))
             DummyModel.count() should be (1)
@@ -22,10 +21,10 @@ class MongoEmbedDatabaseImmutableTest extends FunSuite with ShouldMatchers with 
     }
 
     test("launch fail() in fixture") {
-        evaluating {
+        an[TestFailedException] should be thrownBy {
             withEmbedMongoFixture(12345) { mongodProps =>
                 fail("fail")
             }
-        } should produce[TestFailedException]
+        }
     }
 }
