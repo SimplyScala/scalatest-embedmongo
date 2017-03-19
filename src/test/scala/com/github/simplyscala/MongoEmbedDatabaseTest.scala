@@ -1,9 +1,9 @@
 package com.github.simplyscala
 
-import org.scalatest.{BeforeAndAfter, FunSuite}
-import org.scalatest.matchers.ShouldMatchers
-
-class MongoEmbedDatabaseTest extends FunSuite with ShouldMatchers with BeforeAndAfter with MongoEmbedDatabase {
+import org.mongodb.scala.bson.collection.immutable.Document
+import org.scalatest.{BeforeAndAfter, FunSuite, Matchers}
+import Helpers._
+class MongoEmbedDatabaseTest extends FunSuite with Matchers with BeforeAndAfter with MongoEmbedDatabase {
 
     var mongoProps: MongodProps = null
 
@@ -12,7 +12,8 @@ class MongoEmbedDatabaseTest extends FunSuite with ShouldMatchers with BeforeAnd
     after { mongoStop(mongoProps) }
 
     test("test connection with embed mongodb") {
-        DummyModel2.save(DummyModel(name = "test"))
-        DummyModel2.count() should be(1)
+      val conn = Connector.getCollection(Connector.conf2)
+      conn.insertOne(document = Document("name" -> "testFixture")).results()
+      conn.count().headResult() should be (1)
     }
 }
