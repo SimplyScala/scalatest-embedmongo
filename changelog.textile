@@ -33,9 +33,10 @@ h3. Version 0.2.2
 	    ** fix bug : https://github.com/SimplyScala/scalatest-embedmongo/issues/4
 
 h3. Version 0.2.3
-	* delivery date : ???
+	* delivery date : september 1th 2016
     * developer(s)  :
         ** bourdon.ugo@gmail.com
     * features      :
 	    ** build against scala 2.11.1 version (cross version 2.10.4)
-	    **
+	    ** upgrade de.flapdoodle.embed.mongo to 1.50.0 version
+	    ** set default mongo version to 3.0.5

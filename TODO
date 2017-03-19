@@ -4,3 +4,7 @@
 -> retirer la feature "withEmbedMongoFixture" (car marche pas bien)
 -> utiliser scala 2.11 comme version de scala principale
 -> introduire MongoTestSuite trait
+
+-> utiliser le plugin https://github.com/xerial/sbt-sonatype
+//https://oss.sonatype.org/#stagingRepositories
+-> upgrade flapdoo to version 2 (only java 8) https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo
