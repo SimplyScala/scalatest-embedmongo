@@ -1,6 +1,3 @@
--> utiliser le plugin https://github.com/xerial/sbt-sonatype
-//https://oss.sonatype.org/#stagingRepositories
-
 -> revoir l'api "classic" pour supprimer le 'var mongoProps: MongodProps = null'
 -> ajouter la fonctionalité check port (voir http-server)
 -> utiliser reactivemongo plutôt que salat pour les tests

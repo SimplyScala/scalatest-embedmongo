@@ -4,12 +4,12 @@ import sbt._
 // sbt + publish-signed
 object ScalaTestEmbededMongoBuild extends Build {
   lazy val root = Project(id = "simplyscala-server", base = file("."),
-    settings = Project.defaultSettings ++ Seq(
+    settings = Defaults.coreDefaultSettings ++ Seq(
       name := "scalatest-embedmongo",
       organization := "com.github.simplyscala",
       description := "API to use embeded mongoDb database for testing in Scala",
 
-      version := "0.2.4-SNAPSHOT",
+      version := "0.2.4",
 
       scalaVersion := "2.12.1",
 
@@ -27,7 +27,7 @@ object ScalaTestEmbededMongoBuild extends Build {
       publishArtifact in Test := false,
       pomIncludeRepository := { _ => false },
 
-      pomExtra := (
+      pomExtra in Global := {
         <url>https://github.com/SimplyScala/scalatest-embedmongo</url>
           <licenses>
             <license>
@@ -46,8 +46,23 @@ object ScalaTestEmbededMongoBuild extends Build {
               <name>bourdon.ugo@gmail.com</name>
               <url>https://github.com/ubourdon</url>
             </developer>
+	          <developer>
+		          <id>tg44</id>
+		          <name>tg44</name>
+		          <url>https://github.com/tg44</url>
+	          </developer>
           </developers>
-        ),
+      },
+
+	    /**
+	      * how to publish
+	      * ______________
+	      *
+	      * https://github.com/xerial/sbt-sonatype
+	      * http://www.scala-sbt.org/sbt-pgp/usage.html
+	      * http://www.loftinspace.com.au/blog/publishing-scala-libraries-to-sonatype.html#install_pgp_plugin
+	      * http://blog.sonatype.com/2010/01/how-to-generate-pgp-signatures-with-maven/
+	      */
 
       publishTo <<= version { v: String =>
         val nexus = "https://oss.sonatype.org/"
