@@ -20,9 +20,10 @@ trait MongoEmbedDatabase {
         .build()
 
     protected def mongoStart(port: Int = 12345,
+                             host: String = "127.0.0.1",
                              version: Version = Version.V3_3_1,
                              runtimeConfig: IRuntimeConfig = runtimeConfig): MongodProps = {
-        val mongodExe: MongodExecutable = mongodExec(port, version, runtimeConfig)
+        val mongodExe: MongodExecutable = mongodExec(host, port, version, runtimeConfig)
         MongodProps(mongodExe.start(), mongodExe)
     }
 
@@ -32,20 +33,21 @@ trait MongoEmbedDatabase {
     }
 
     protected def withEmbedMongoFixture(port: Int = 12345,
+                                        host: String = "127.0.0.1",
                                         version: Version = Version.V3_3_1,
                                         runtimeConfig: IRuntimeConfig = runtimeConfig)
                                        (fixture: MongodProps => Any) {
-        val mongodProps = mongoStart(port, version, runtimeConfig)
+        val mongodProps = mongoStart(port, host, version, runtimeConfig)
         try { fixture(mongodProps) } finally { Option(mongodProps).foreach( mongoStop ) }
     }
 
     private def runtime(config: IRuntimeConfig): MongodStarter = MongodStarter.getInstance(config)
 
-    private def mongodExec(port: Int, version: Version, runtimeConfig: IRuntimeConfig): MongodExecutable =
+    private def mongodExec(host: String, port: Int, version: Version, runtimeConfig: IRuntimeConfig): MongodExecutable =
         runtime(runtimeConfig).prepare(
             new MongodConfigBuilder()
                 .version(version)
-                .net(new Net(port, Network.localhostIsIPv6()))
+                .net(new Net(host, port, Network.localhostIsIPv6()))
                 .build()
         )
 }
