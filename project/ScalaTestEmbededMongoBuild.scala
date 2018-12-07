@@ -11,9 +11,9 @@ object ScalaTestEmbededMongoBuild extends Build {
 
       version := "0.2.4",
 
-      scalaVersion := "2.12.1",
+      scalaVersion := "2.12.8",
 
-      crossScalaVersions := Seq("2.11.1", "2.12.1"),
+      crossScalaVersions := Seq("2.11.12", "2.12.8"),
 
       libraryDependencies ++= Seq(
         "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.0.0",
