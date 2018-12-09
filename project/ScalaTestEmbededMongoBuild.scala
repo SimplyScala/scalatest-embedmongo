@@ -17,7 +17,7 @@ object ScalaTestEmbededMongoBuild extends Build {
 
       libraryDependencies ++= Seq(
         "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.0.0",
-        "org.scalatest" %% "scalatest" % "3.0.1" % "test",
+        "org.scalatest" %% "scalatest" % "3.0.5" % "test",
         "org.mongodb.scala" %% "mongo-scala-driver" % "1.2.1" % "test"
       ),
 
