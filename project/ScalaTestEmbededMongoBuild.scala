@@ -5,20 +5,20 @@ import sbt._
 object ScalaTestEmbededMongoBuild extends Build {
   lazy val root = Project(id = "simplyscala-server", base = file("."),
     settings = Defaults.coreDefaultSettings ++ Seq(
-      name := "scalatest-embedmongo",
+      name := "scalatest-embedmongoown",
       organization := "com.github.simplyscala",
       description := "API to use embeded mongoDb database for testing in Scala",
 
-      version := "0.2.4",
+      version := "0.2.5",
 
       scalaVersion := "2.12.8",
 
       crossScalaVersions := Seq("2.11.12", "2.12.8"),
 
       libraryDependencies ++= Seq(
-        "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.0.0",
+        "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0",
         "org.scalatest" %% "scalatest" % "3.0.1" % "test",
-        "org.mongodb.scala" %% "mongo-scala-driver" % "1.2.1" % "test"
+        "org.mongodb.scala" %% "mongo-scala-driver" % "2.5.0" % "test"
       ),
 
       parallelExecution := false,
