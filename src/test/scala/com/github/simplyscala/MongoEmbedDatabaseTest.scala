@@ -14,6 +14,6 @@ class MongoEmbedDatabaseTest extends FunSuite with Matchers with BeforeAndAfter 
     test("test connection with embed mongodb") {
       val conn = Connector.getCollection(Connector.conf2)
       conn.insertOne(document = Document("name" -> "testFixture")).results()
-      conn.count().headResult() should be (1)
+      conn.countDocuments().headResult() should be (1)
     }
 }

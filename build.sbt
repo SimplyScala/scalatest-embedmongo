@@ -10,6 +10,8 @@ lazy val root = (project in file("."))
 
     crossScalaVersions := Seq("2.11.12", "2.12.8", "2.13.0"),
 
+    scalacOptions := Seq("-deprecation"),
+
     libraryDependencies ++= Seq(
       "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.0.0",
       "org.scalatest" %% "scalatest" % "3.0.8" % "test",

@@ -26,7 +26,7 @@ class MongoEmbedDatabaseImmutableTest extends FunSuite with Matchers with MongoE
     withEmbedMongoFixture(12345) { mongodProps =>
       val conn = Connector.getCollection(Connector.conf1)
       conn.insertOne(document = Document("name" -> "testFixture")).results()
-      conn.count().results() should be(1)
+      conn.countDocuments().results() should be(1)
     }
   }
 
