@@ -16,7 +16,7 @@ trait MongoEmbedDatabase {
 
     private val runtimeConfig = new RuntimeConfigBuilder()
         .defaults(Command.MongoD)
-        .processOutput(ProcessOutput.getDefaultInstanceSilent())
+        .processOutput(ProcessOutput.getDefaultInstanceSilent)
         .build()
 
     protected def mongoStart(port: Int = 12345,
@@ -27,7 +27,7 @@ trait MongoEmbedDatabase {
         MongodProps(mongodExe.start(), mongodExe)
     }
 
-    protected def mongoStop( mongodProps: MongodProps ) = {
+    protected def mongoStop( mongodProps: MongodProps ): Unit = {
         Option(mongodProps).foreach( _.mongodProcess.stop() )
         Option(mongodProps).foreach( _.mongodExe.stop() )
     }
@@ -36,7 +36,7 @@ trait MongoEmbedDatabase {
                                         host: String = "127.0.0.1",
                                         version: Version = Version.V3_3_1,
                                         runtimeConfig: IRuntimeConfig = runtimeConfig)
-                                       (fixture: MongodProps => Any) {
+                                       (fixture: MongodProps => Any): Unit = {
         val mongodProps = mongoStart(port, host, version, runtimeConfig)
         try { fixture(mongodProps) } finally { Option(mongodProps).foreach( mongoStop ) }
     }

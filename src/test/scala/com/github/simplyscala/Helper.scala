@@ -26,16 +26,16 @@ object Connector {
 object Helpers {
 
   implicit class DocumentObservable[C](val observable: Observable[Document]) extends ImplicitObservable[Document] {
-    override val converter: (Document) => String = (doc) => doc.toJson
+    override val converter: Document => String = doc => doc.toJson
   }
 
   implicit class GenericObservable[C](val observable: Observable[C]) extends ImplicitObservable[C] {
-    override val converter: (C) => String = (doc) => doc.toString
+    override val converter: C => String = doc => doc.toString
   }
 
   trait ImplicitObservable[C] {
     val observable: Observable[C]
-    val converter: (C) => String
+    val converter: C => String
 
     def results(): Seq[C] = Await.result(observable.toFuture(), Duration(10, TimeUnit.SECONDS))
 
@@ -46,7 +46,7 @@ object Helpers {
       results().foreach(res => println(converter(res)))
     }
 
-    def printHeadResult(initial: String = ""): Unit = println(s"${initial}${converter(headResult())}")
+    def printHeadResult(initial: String = ""): Unit = println(s"$initial${converter(headResult())}")
   }
 
 }
