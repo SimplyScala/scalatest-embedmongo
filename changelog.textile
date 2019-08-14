@@ -40,3 +40,15 @@ h3. Version 0.2.3
 	    ** build against scala 2.11.1 version (cross version 2.10.4)
 	    ** upgrade de.flapdoodle.embed.mongo to 1.50.0 version
 	    ** set default mongo version to 3.0.5
+
+h3. Version 0.2.3
+	* delivery date : august 14th 2019
+    * developer(s)  :
+        ** ravi@zentium.co.uk
+    * features      :
+	    ** build against scala 2.13.0
+	    ** upgrade sbt to 1.2.8 version
+	    ** upgrade org.xerial.sbt:sbt-sonatype to 2.0 version
+	    ** upgrade com.jsuereth:sbt-pgp to 1.1.1 version
+	    ** upgrade de.flapdoodle.embed.mongo to 2.0.0 version
+	    ** upgrade mongo-scala-driver to 2.7.0 version
