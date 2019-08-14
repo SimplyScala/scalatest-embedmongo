@@ -52,3 +52,4 @@ h3. Version 0.2.3
 	    ** upgrade com.jsuereth:sbt-pgp to 1.1.1 version
 	    ** upgrade de.flapdoodle.embed.mongo to 2.0.0 version
 	    ** upgrade mongo-scala-driver to 2.7.0 version
+	    ** fix deprecation warnings
