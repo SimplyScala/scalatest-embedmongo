@@ -8,3 +8,7 @@ target/**
 project/project/**
 
 .history
+
+.metals/
+.bloop/
+project/.bloop/
