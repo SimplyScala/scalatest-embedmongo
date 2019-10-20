@@ -13,12 +13,12 @@ object ScalaTestEmbededMongoBuild extends Build {
 
       scalaVersion := "2.12.8",
 
-      crossScalaVersions := Seq("2.11.12", "2.12.8"),
+      crossScalaVersions := Seq("2.11.12", "2.12.8", "2.13.1"),
 
       libraryDependencies ++= Seq(
-        "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.0.0",
-        "org.scalatest" %% "scalatest" % "3.0.1" % "test",
-        "org.mongodb.scala" %% "mongo-scala-driver" % "1.2.1" % "test"
+        "de.flapdoodle.embed" % "de.flapdoodle.embed.mongo" % "2.2.0",
+        "org.scalatest" %% "scalatest" % "3.0.8" % "test",
+        "org.mongodb.scala" %% "mongo-scala-driver" % "2.7.0" % "test"
       ),
 
       parallelExecution := false,
